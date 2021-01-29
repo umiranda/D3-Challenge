@@ -216,17 +216,6 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("fill", "lightgreen")
     .attr("opacity", ".75");
 
-//     // append initial circles
-//   var circlesGroupy = chartGroup.selectAll("circle")
-//     .data(data)
-//     .enter()
-//     .append("circle")
-//     .attr("cx", d => xLinearScale(d[chosenXAxis]))
-//     .attr("cy", d => yLinearScale(d[chosenYAxis]))
-//     .attr("r", 20)
-//     .attr("fill", "pink")
-//     .attr("opacity", ".5");
-
   // Create group for 3 x-axis labels
   var labelsGroupx = chartGroup.append("g")
     .attr("transform", `translate(${width / 2}, ${height + 20})`);
