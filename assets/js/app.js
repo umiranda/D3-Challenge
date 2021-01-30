@@ -16,8 +16,8 @@ var height = svgHeight - margin.top - margin.bottom;
 var svg = d3
   .select("#scatter")
   .append("svg")
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
+  .attr("viewBox", `0 0 750 450`)
+  
 
 // Append an SVG group
 var chartGroup = svg.append("g")
