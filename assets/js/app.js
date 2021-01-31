@@ -135,11 +135,13 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup, textGroup) {
   circlesGroup.call(toolTip);
   // Create Event Listeners to Display and Hide the Circles Tooltip
   circlesGroup.on("mouseover", function(data) {
-    toolTip.show(data, this);
+    toolTip.show(data, this)
+    d3.select(this).style("stroke", "red");
   })
     // onmouseout Event
     .on("mouseout", function(data) {
-      toolTip.hide(data);
+      toolTip.hide(data)
+      d3.select(this).style("stroke", "transparent");
     });
   // Create Text Tooltip in the Chart
   textGroup.call(toolTip);
@@ -200,6 +202,7 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", 10)
     .attr("fill", "lightgreen")
+    
     .attr("opacity", ".75");
 
   // // Append Text to Circles
@@ -225,21 +228,21 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("y", 20)
     .attr("value", "poverty") // value to grab for event listener
     .classed("active", true)
-    .text("Poverty");
+    .text("Poverty (%)");
 
   var ageLabel = labelsGroupx.append("text")
     .attr("x", 0)
     .attr("y", 40)
     .attr("value", "age") // value to grab for event listener
     .classed("inactive", true)
-    .text("Age");
+    .text("Age (Median)");
 
   var incomeLabel = labelsGroupx.append("text")
     .attr("x", 0)
     .attr("y", 60)
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
-    .text("Income");
+    .text("Household Income (Median)");
 
   // append y axis
   // Create group for two x-axis labels
@@ -252,7 +255,7 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("y", -20)
     .attr("value", "obesity") // value to grab for event listener
     .classed("inactive", true)
-    .text("Obesity");
+    .text("Obese (%)");
   
   var healthcareLabel = labelsGroupy.append("text")
   .attr("transform", "rotate(-90)")
@@ -260,7 +263,7 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("y", 0)
     .attr("value", "healthcare") // value to grab for event listener
     .classed("inactive", true)
-    .text("Healthcare");
+    .text("Lacks Healthcare (%)");
     
   var smokesLabel = labelsGroupy.append("text")
   .attr("transform", "rotate(-90)")
@@ -268,7 +271,7 @@ d3.csv("/assets/data/data.csv").then(function(data, err) {
     .attr("y", 20)
     .attr("value", "smokes") // value to grab for event listener
     .classed("inactive", true)
-    .text("Smokes");
+    .text("Smokes (%)");
   
   
 
